@@ -192,19 +192,19 @@ $i = 0;
     } else {
          echo '"table" />';
     } ?>
-
+ 
+ $tbl_struc_class =array("column","type","collation","attributes","null","default","extra");
+ $tbl_struc_caption = array("Name","Type","Collation","Attributes","Null","Default","Extra");
+    
+  
 <table id="tablestructure" class="data">
 <thead>
 <tr>
-    <th id="th<?php echo ++$i; ?>"></th>
-    <th id="th<?php echo ++$i; ?>">#</th>
-    <th id="th<?php echo ++$i; ?>" class="column"><?php echo __('Name'); ?></th>
-    <th id="th<?php echo ++$i; ?>" class="type"><?php echo __('Type'); ?></th>
-    <th id="th<?php echo ++$i; ?>" class="collation"><?php echo __('Collation'); ?></th>
-    <th id="th<?php echo ++$i; ?>" class="attributes"><?php echo __('Attributes'); ?></th>
-    <th id="th<?php echo ++$i; ?>" class="null"><?php echo __('Null'); ?></th>
-    <th id="th<?php echo ++$i; ?>" class="default"><?php echo __('Default'); ?></th>
-    <th id="th<?php echo ++$i; ?>" class="extra"><?php echo __('Extra'); ?></th>
+    foreach($tbl_struc_class as $i=>$value))
+    {
+      echo " <th id=\"th$i\" class=\"$tbl_struc_class[$i]\" > __('$tbl_struc_caption[$i]') </th>" ;
+      
+    }
 <?php if ($db_is_information_schema || $tbl_is_view) { ?>
     <th id="th<?php echo ++$i; ?>" class="view"><?php echo __('View'); ?></th>
 <?php } else { ?>
